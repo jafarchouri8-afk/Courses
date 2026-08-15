@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Courses Launcher</title>
+
+
+<style>
+
+/* ========================= */
+/* RESET */
+/* ========================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+
+/* ========================= */
+/* PAGE */
+/* ========================= */
+
+html,
+body{
+
+    width:100%;
+    height:100%;
+
+    overflow:hidden;
+
+    font-family:Segoe UI,Arial,sans-serif;
+
+}
+
+
+body{
+
+    background:
+    radial-gradient(
+        circle at center,
+        #111827 0%,
+        #090B10 65%,
+        #050608 100%
+    );
+
+}
+
+
+/* ========================= */
+/* LAUNCHER */
+/* ========================= */
+
+.launcher{
+
+    width:100vw;
+    height:100vh;
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+    grid-template-rows:1fr 1fr;
+
+    gap:4px;
+
+}
+
+
+/* ========================= */
+/* TILE */
+/* ========================= */
+
+.tile{
+
+    position:relative;
+
+    display:flex;
+
+    justify-content:center;
+    align-items:center;
+
+    overflow:hidden;
+
+    cursor:pointer;
+
+    text-decoration:none;
+
+    background:rgba(10,12,18,.30);
+
+    backdrop-filter:blur(10px);
+
+    transition:
+        transform .35s ease,
+        background .35s ease,
+        box-shadow .35s ease;
+
+}
+
+
+/* ========================= */
+/* COLOURED FRAME */
+/* ========================= */
+
+.tile::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    border:4px solid var(--accent);
+
+    opacity:.9;
+
+    transition:
+        box-shadow .35s ease,
+        opacity .35s ease;
+
+}
+
+
+/* ========================= */
+/* SOFT GLOW */
+/* ========================= */
+
+.tile::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:500px;
+    height:500px;
+
+    border-radius:50%;
+
+    background:var(--glow);
+
+    filter:blur(35px);
+
+    opacity:0;
+
+    transition:opacity .45s ease;
+
+    pointer-events:none;
+
+}
+
+
+/* ========================= */
+/* HOVER */
+/* ========================= */
+
+.tile:hover{
+
+    transform:scale(1.015);
+
+    z-index:5;
+
+    background:rgba(20,24,34,.45);
+
+    box-shadow:
+        0 0 50px var(--glow),
+        inset 0 0 180px var(--glow);
+
+}
+
+
+.tile:hover::before{
+
+    opacity:1;
+
+    box-shadow:
+        0 0 25px var(--glow);
+
+}
+
+
+.tile:hover::after{
+
+    opacity:.8;
+
+}
+
+
+/* ========================= */
+/* LOGOS */
+/* ========================= */
+
+.logo{
+
+    position:relative;
+
+    z-index:2;
+
+    width:300px;
+
+    max-width:60%;
+
+    max-height:55%;
+
+    object-fit:contain;
+
+    transition:
+        transform .35s ease,
+        filter .35s ease;
+
+    filter:
+        drop-shadow(
+            0 12px 30px rgba(0,0,0,.40)
+        );
+
+}
+
+
+.tile:hover .logo{
+
+    transform:scale(1.12);
+
+    filter:
+        drop-shadow(
+            0 18px 38px rgba(0,0,0,.55)
+        );
+
+}
+
+
+/* ========================= */
+/* ADU */
+/* ========================= */
+
+.adu{
+
+    --accent:#FD0000;
+
+    --glow:
+        rgba(253,0,0,.30);
+
+}
+
+
+/* ========================= */
+/* UDEMY */
+/* ========================= */
+
+.udemy{
+
+    --accent:#B82EFB;
+
+    --glow:
+        rgba(184,46,251,.30);
+
+}
+
+
+/* ========================= */
+/* PRAKHAR KE PRAVACHAN */
+/* ========================= */
+
+.pravachan{
+
+    --accent:#009C99;
+
+    --glow:
+        rgba(0,156,153,.30);
+
+}
+
+
+/* ========================= */
+/* WEBVEDA */
+/* ========================= */
+
+.webveda{
+
+    --accent:#005CFF;
+
+    --glow:
+        rgba(0,92,255,.30);
+
+}
+
+
+/* ========================= */
+/* MOBILE */
+/* ========================= */
+
+@media(max-width:700px){
+
+    html,
+    body{
+
+        overflow:auto;
+
+    }
+
+    .launcher{
+
+        grid-template-columns:1fr;
+
+        grid-template-rows:
+            repeat(4,1fr);
+
+        min-height:100vh;
+
+    }
+
+    .logo{
+
+        width:210px;
+
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="launcher">
+
+
+    <!-- ========================= -->
+    <!-- ADU -->
+    <!-- ========================= -->
+
+    <a
+        class="tile adu"
+        href="https://www.amanduggal.com/login"
+        target="_blank"
+        rel="noopener noreferrer"
+    >
+
+        <img
+            class="logo"
+            src="logos/adu.png"
+            alt="ADU"
+        >
+
+    </a>
+
+
+
+    <!-- ========================= -->
+    <!-- UDEMY -->
+    <!-- ========================= -->
+
+    <a
+        class="tile udemy"
+        href="https://www.udemy.com/"
+        target="_blank"
+        rel="noopener noreferrer"
+    >
+
+        <img
+            class="logo"
+            src="logos/udemy.png"
+            alt="Udemy"
+        >
+
+    </a>
+
+
+
+    <!-- ========================= -->
+    <!-- PRAKHAR KE PRAVACHAN -->
+    <!-- ========================= -->
+
+    <a
+        class="tile pravachan"
+        href="https://app.thepravachan.com/web/activity"
+        target="_blank"
+        rel="noopener noreferrer"
+    >
+
+        <img
+            class="logo"
+            src="logos/pravachan.png"
+            alt="Prakhar Ke Pravachan"
+        >
+
+    </a>
+
+
+
+    <!-- ========================= -->
+    <!-- WEBVEDA -->
+    <!-- ========================= -->
+
+    <a
+        class="tile webveda"
+        href="https://learn.webveda.com/web/community/feed"
+        target="_blank"
+        rel="noopener noreferrer"
+    >
+
+        <img
+            class="logo"
+            src="logos/webveda.png"
+            alt="WebVeda"
+        >
+
+    </a>
+
+
+</div>
+
+
+</body>
+
+</html>
